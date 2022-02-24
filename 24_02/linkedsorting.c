@@ -21,10 +21,10 @@ int main()
         }while((op=='y')||(op=='Y'));
         print(hptr);
         printf("\n");
-        int c=count(hptr);
-        printf("count:%d\n",c);
-        sorting(hptr);
-        print(hptr);
+        //int c=count(hptr);
+        //printf("count:%d\n",c);
+        //sorting(hptr);
+        //print(hptr);
 }
 int count(st*ptr)
 {
@@ -66,11 +66,12 @@ void sorting(st*ptr)
 void print(st*ptr)
 {
         st *temp=ptr;
-        while(temp!=0)
+        while(temp->next!=ptr)
         {
         printf("%d",temp->roll);
         temp=temp->next;
         }
+	printf("%d",temp->roll);
 }
 void add_end(st**ptr)
 {
@@ -78,13 +79,13 @@ void add_end(st**ptr)
         scanf("%d",&temp->roll);
         if(*ptr==NULL)
         {
+	*ptr=temp;
         temp->next=*ptr;
-        *ptr=temp;
-        }
+    	}
         else
         {
         st*last=*ptr;
-        while(last->next!=0)
+        while(last->next!=*ptr)
         last=last->next;
         temp->next=last->next;
         last->next=temp;
